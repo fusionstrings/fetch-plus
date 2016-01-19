@@ -62,7 +62,7 @@ function _callFetch (endpoint, path = "", options = {}, middlewares = []) {
 	let fetchFunc;
 
 	return new Promise((resolve, reject) => {
-		const url = _trimSlashes(compute(endpoint.url));
+		const url = compute(endpoint.url);
 
 		path = compute(path);
 
@@ -70,7 +70,7 @@ function _callFetch (endpoint, path = "", options = {}, middlewares = []) {
 			path = [path];
 		}
 
-		path = _trimSlashes(path.map(compute).map(encodeURI).join("/"));
+		path = path.map(compute).map(encodeURI).join("/");
 
 		if (path) {
 			path = "/" + path;
